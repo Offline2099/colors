@@ -1,59 +1,26 @@
-# Colors
+# Color Converter
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.5.
+## Project Description
 
-## Development server
+An easy-to-use color converter. Can also be thought of as a demonstration for explaining color spaces (RGB, HSL, and CMYK). Includes multiple input notations for each color space. Can be used as a color picker.
 
-To start a local development server, run:
+* Allows multiple ways to input the color: with sliders for any of the three color spaces, or as text in multiple notations (such as arithmetic, percentages, hexadecimal).
+    
+* Automatically outputs the color converted to all three color spaces (RGB, HSL, CMYK) in all the most commonly used notations.
+    
+* Provides an interactive visual demonstration of how changing a color in one format affects the representation of that color in other formats.
+    
+* Includes complex step-by-step validation for text input (which uses regular expressions). Shows exactly what is wrong in case of an error. Provides warnings for valid but odd input.
+    
+* Contains a separate tab with a brief summary of how the human eye recognizes and distinguishes colors, along with a simple explanation of how color spaces are constructed.
+    
+* Can possibly be upgraded to work with more rare and exotic color spaces or color notations.
 
-```bash
-ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Technical Information
 
-## Code scaffolding
+This project is made with Angular.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+* To run the app in the development mode, run `ng serve` in the project directory. Open [http://localhost:4200](http://localhost:4200) to view it in the browser. The page will reload if you make edits.
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+* To build the app in the production mode, run `ng build` in the project directory. The app will be saved to the `dist/` directory.

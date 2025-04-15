@@ -1,0 +1,234 @@
+@use '../../../styles-shared' as *;
+
+:host {
+  @include page;
+  @include page-bg-gradient-linear;
+}
+
+//=============================================================================
+//  Column
+//=============================================================================
+
+.column {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: min(1000px, 100% - 16px);
+  min-height: calc(100% - 40px);
+  margin-bottom: 15px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: $bg-medium;
+  box-shadow: 0 0 2px 2px $shadow-medium-bright inset;
+  @include tablet {
+    margin: 0 8px 10px 8px;
+    padding: 15px 8px;
+  }
+  @include mobile {
+    padding: 10px 8px;
+  }
+}
+
+//=============================================================================
+//  Section
+//=============================================================================
+
+.info-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 8px 0;
+  border-radius: 6px;
+  background: $bg-medium-dark;
+  box-shadow: 0 0 2px 2px $shadow-bright inset;
+  overflow: hidden;
+  transition: .2s;
+  @include hover {
+    &.hovered {
+      background: $bg-medium-brighter;
+    }
+  }
+  @include mobile {
+    margin: 5px 0;
+  }
+}
+
+//=============================================================================
+//  Section Header
+//=============================================================================
+
+.info-section-header {
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  transition: .2s;
+  @include tablet {
+    padding: 8px;
+  }
+}
+
+.triangle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px 0 15px;
+  .triangle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    color: $text-dim;
+    font-size: 18px;
+    transform: rotate(90deg);
+    transition: .3s;
+    user-select: none;
+    @include tablet {
+      font-size: 16px;
+    }
+    @include mobile {
+      font-size: 15px;
+    }
+  }
+  @include tablet {
+    padding: 0 10px 0 8px;
+  }
+}
+
+.info-section.collapsed .triangle-container .triangle {
+  transform: rotate(0deg);
+}
+
+.text-container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  .header-text {
+    display: flex;
+    width: 100%;
+    padding: 0 5px 4px 5px;
+    border-bottom: 1px solid $border-dark;
+    font-size: 22px;
+    letter-spacing: .02em;
+    @include tablet {
+      font-size: 20px;
+    }
+    @include mobile {
+      font-size: 18px;
+    }
+  }
+  .header-caption {
+    display: flex;
+    padding: 4px 5px 2px 5px;
+    color: $text-dim;
+    font-size: 15px;
+    letter-spacing: .02em;
+    @include mobile {
+      font-size: 13px;
+    }
+  }
+}
+
+//=============================================================================
+//  Section Body
+//=============================================================================
+
+.info-section-body {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+  margin: 0 10px 10px 10px;
+  padding: 10px;
+  border-radius: 6px;
+  background: $bg-dark;
+  animation: fade-in .5s;
+  @include tablet {
+    padding: 10px 8px;
+  }
+  @include mobile {
+    margin: 0 5px 5px 5px;
+    padding: 5px;
+  }
+}
+
+.info-section.collapsed .info-section-body {
+  display: none;
+}
+
+ul {
+  margin: 10px 10px 10px 25px;
+  list-style-type: disc;
+  font-size: 15px;
+  letter-spacing: .02em;
+  @include mobile {
+    margin: 8px 8px 8px 20px;
+    font-size: 13px;
+  }
+}
+
+ul ul {
+  margin: 10px 0 0 20px;
+  @include mobile {
+    margin: 8px 0 0 12px;
+  }
+}
+
+li {
+  margin-bottom: 12px;
+  padding-left: 5px;
+}
+
+li li {
+  margin-bottom: 8px;
+}
+
+li:last-of-type,
+li li:last-of-type {
+  margin-bottom: 0;
+}
+
+strong {
+  color: $text-bright;
+  font-weight: 500;
+}
+
+.no-break {
+  white-space: nowrap;
+  letter-spacing: initial;
+}
+
+.red {
+  color: #ff3333;
+}
+
+.green {
+  color: #00aa00;
+}
+
+.blue {
+  color: #4499ff;
+}
+
+.cyan {
+  color: #00cccc;
+}
+
+.magenta {
+  color: #ee77ee;
+}
+
+.yellow {
+  color: #bbbb00;
+}
+
+.range-input-container {
+  display: flex;
+  flex-basis: 100%;
+  flex-shrink: 0;
+  justify-content: center;
+  margin-top: 10px;
+  @include mobile {
+    margin-top: 6px;
+  }
+}

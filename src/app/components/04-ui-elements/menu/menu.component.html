@@ -1,0 +1,21 @@
+<!-- Text Label -->
+@if (label()) {
+  <div class="label-text">{{label()}}</div>
+}
+
+<!-- Options -->
+@for (option of options(); track $index) {
+  <a
+    class="menu-option"
+    [routerLink]="option.url || []"
+    [fragment]="option.urlFragment"
+    [routerLinkActive]="selectedId() === '' ? 'selected': ''"
+    [ngClass]="{'selected': selectedId() === option.id}">
+
+    <span class="circle-outer">
+      <span class="circle-inner"></span>
+    </span>
+
+    <div>{{option.text}}</div>
+  </a>
+}

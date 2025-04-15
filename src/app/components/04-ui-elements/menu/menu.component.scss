@@ -1,0 +1,182 @@
+@use 'sass:color';
+@use '../../../../styles-shared' as *;
+
+:host {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  .menu-option {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    text-decoration: none;
+    user-select: none;
+    transition: .3s;
+    &.selected {
+      pointer-events: none;
+    }
+  }
+  .circle-outer {
+    display: none;
+  }
+}
+
+//=============================================================================
+//  Main Menu Styles
+//=============================================================================
+
+:host.main-menu {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  .menu-option {
+    margin: 0 10px;
+    padding: 6px 20px 10px 20px;
+    border-radius: 6px;
+    background: $bg-dark;
+    box-shadow: 0 0 2px 2px $shadow-bright inset, 0 0 1px 1px $shadow-very-dark;
+    color: $text-dim;
+    font-size: 22px;
+    letter-spacing: .02em;
+    text-shadow: 1px 1px $shadow-very-dark;
+    cursor: pointer;
+    &.selected {
+      background: $bg-medium-bright;
+      color: $text-normal;
+    }
+    @include hover {
+      background: $bg-medium-brighter;
+      box-shadow: 0 0 2px 2px $shadow-brighter inset, 0 0 1px 1px $shadow-very-dark;
+    }
+    @include tablet {
+      margin: 0 8px;
+      padding: 6px 15px 8px 15px;
+      font-size: 20px;
+    }
+    @include mobile {
+      margin: 0 4px;
+      padding: 6px 10px 8px 10px;
+      font-size: 18px;
+    }
+  }
+  @include tablet {
+    top: 64px;
+  }
+}
+
+//=============================================================================
+//  Converter Menu Styles
+//=============================================================================
+
+:host.converter-menu {
+  .menu-option {
+    margin: 0 5px;
+    padding: 10px 20px;
+    border-radius: 6px 6px 0 0;
+    color: $text-dim;
+    background: color.adjust($bg-dark, $alpha: -0.5);
+    box-shadow: 0 0 2px 2px color.adjust($shadow-medium, $alpha: -0.5) inset;
+    font-size: 18px;
+    letter-spacing: .02em;
+    cursor: pointer;
+    &.selected {
+      color: $text-normal;
+      background: $bg-medium-bright;
+      box-shadow: none;
+    }
+    @include hover {
+      background: $bg-dark;
+    }
+    @include tablet {
+      font-size: 16px;
+    }
+    @include mobile {
+      margin: 0 3px;
+      padding: 8px 10px;
+      font-size: 14px;
+    }
+  }
+}
+
+//=============================================================================
+//  Converter Input Notation Menu Styles
+//=============================================================================
+
+:host.notation-menu {
+  .label-text {
+    display: inline-flex;
+    margin-right: 10px;
+    @include tablet {
+      font-size: 15px;
+    }
+    @include mobile {
+      width: 100%;
+      margin-top: 10px;
+      margin-bottom: 3px;
+      justify-content: center;
+    }
+  }
+  .menu-option {
+    align-items: center;
+    margin: 0 5px;
+    padding: 10px;
+    color: inherit;
+    letter-spacing: .02em;
+    cursor: pointer;
+    @include tablet {
+      font-size: 15px;
+    }
+    @include mobile {
+      margin: 0;
+      padding: 5px 15px 3px 5px;
+      font-size: 14px;
+      &:last-of-type {
+        padding-right: 5px;
+      }
+    }
+  }
+  .circle-outer {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    border: 1px solid $border-normal;
+    border-radius: 50%;
+    background: $bg-dark;
+    @include tablet {
+      width: 16px;
+      height: 16px;
+    }
+    @include mobile {
+      width: 14px;
+      height: 14px;
+    }
+  }
+  .circle-inner {
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: green;
+    transition: .2s;
+  }
+  .menu-option.selected .circle-inner {
+    width: 10px;
+    height: 10px;
+    @include tablet {
+      width: 8px;
+      height: 8px;
+    }
+    @include mobile {
+      width: 6px;
+      height: 6px;
+    }
+  }
+  @include mobile {
+    flex-wrap: wrap;
+  }
+}

@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@use './styles-shared' as *;
+
+html,
+body {
+  display: flex;
+  width: 100%;
+  min-width: 320px;
+  background: $bg-base;
+  color: $text-normal;
+  font-family: 'Open Sans', sans-serif;
+  cursor: default;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::selection {
+  background: $bg-selection;
+  color: $text-selection;
+}

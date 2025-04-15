@@ -1,0 +1,17 @@
+<!-- Header -->
+<div class="block-header">
+  <span>{{colorSpace().name}} Color Space</span>
+  <div 
+    class="block-toggler"
+    (click)="toggleBlock()">
+    <span class="triangle">&#9650;</span>
+  </div>
+</div>
+
+<!-- Color Sample -->
+<div class="color-sample" [ngStyle]="{'background': color().hex}"></div>
+
+<!-- Inputs -->
+@for (range of ranges; track range.id) {
+  <app-range-input [range]="range" (valueChange)="setColor(range.id, $event)" />
+}

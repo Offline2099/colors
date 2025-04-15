@@ -1,0 +1,304 @@
+@use 'sass:color';
+@use '../../../styles-shared' as *;
+
+:host {
+  @include page;
+  @include page-bg-gradient-conic;
+}
+
+//=============================================================================
+//  Container
+//=============================================================================
+
+.converter-block {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  min-height: calc(100% - 60px);
+  margin: 0 20px 20px 20px;
+  padding: 10px 10px 20px 10px;
+  border-radius: 10px;
+  background: color.adjust($bg-dark, $alpha: -0.5);
+  box-shadow: 
+    0 0 5px 5px $shadow-medium inset,
+    0 0 40px 20px color.adjust($shadow-medium, $alpha: -0.5) inset;
+  & > * {
+    animation: fade-in .6s;
+  }
+  app-output-color {
+    @include enable-blink(500ms);
+  }
+  @include tablet {
+    margin: 0 10px 15px 10px;
+    border-radius: 8px;
+  }
+  @include mobile {
+    min-height: calc(100% - 50px);
+    margin: 0 5px;
+    padding: 10px 5px 20px 5px;
+    border-radius: 6px;
+  }
+}
+
+//=============================================================================
+//  Converter Instruction 
+//=============================================================================
+
+.instruction-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  .instruction-text {
+    display: flex;
+    max-width: 1000px;
+    padding: 10px;
+    text-align: center;
+    font-size: 17px;
+    letter-spacing: .015em;
+    @include tablet {
+      font-size: 16px;
+    }
+    @include mobile {
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+  }
+}
+
+//=============================================================================
+//  Input Format Example
+//=============================================================================
+
+.example-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  .example-text {
+    display: flex;
+    align-items: center;
+    max-width: 1000px;
+    padding: 10px 0;
+    text-align: center;
+    .example-text-label {
+      margin-right: 20px;
+      padding-bottom: 2px;
+      letter-spacing: .015em;
+      user-select: none;
+      @include mobile {
+        margin-right: 10px;
+        padding-bottom: 3px;
+      }
+    }
+    .example-string {
+      padding: 5px 10px;
+      background: $bg-medium-dark;
+      border-radius: 4px;
+      color: $text-dim-brighter;
+      font-family: 'Inconsolata', monospace;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      @include mobile {
+        padding: 4px 8px;
+        font-size: 14px;
+      }
+    }
+    @include tablet {
+      font-size: 15px;
+    }
+  }
+}
+
+//=============================================================================
+//  Text Input
+//=============================================================================
+
+.text-input-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin: 15px 5px 20px 5px;
+  @include tablet {
+    margin: 10px 5px;
+  }
+}
+
+.text-input-block {
+  display: inline-flex;
+  border-radius: 6px;
+  box-shadow: 0 0 1px 1px $shadow-very-dark;
+  @include mobile {
+    width: 100%;
+  }
+}
+
+input[type=text] {
+  display: flex;
+  width: 430px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px 0 0 6px;
+  background: $bg-bright;
+  color: $text-normal;
+  font-size: 16px;
+  letter-spacing: .03em;
+  &:focus {
+    outline: none;
+  }
+  @include tablet {
+    font-size: 15px;
+    padding: 8px 10px;
+  }
+  @include mobile {
+    width: unset;
+    flex-grow: 1;
+    font-size: 14px;
+  }
+}
+
+.convert-button {
+  display: flex;
+  padding: 10px 15px;
+  border: none;
+  border-left: 1px solid $border-darker;
+  border-radius: 0 6px 6px 0;
+  background: $bg-medium-dark;
+  color: $text-normal;
+  font-size: 16px;
+  letter-spacing: .05em;
+  user-select: none;
+  transition: .3s;
+  cursor: pointer;
+  @include hover {
+    background: $bg-medium-brighter;
+  }
+  @include tablet {
+    font-size: 15px;
+    padding: 8px 10px;
+  }
+  @include mobile {
+    font-size: 14px;
+  }
+}
+
+//=============================================================================
+//  Input Errors and Warnings
+//=============================================================================
+
+.input-issues-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: min(800px, 100%);
+  margin: 0 5px 10px 5px;
+  padding: 10px;
+  border-radius: 10px;
+  @include enable-blink(500ms);
+  &.input-errors {
+    background: rgba(120, 0, 0, .2);
+    box-shadow: 0 0 2px 2px rgba(120, 0, 0, .3) inset;
+  }
+  &.input-warnings {
+    background: rgba(190, 190, 0, .1);
+    box-shadow: 0 0 2px 2px rgba(190, 190, 0, .1) inset;
+  }
+  @include tablet {
+    margin: 0 5px 8px 5px;
+    padding: 8px 5px;
+    border-radius: 6px;
+  }
+}
+
+.input-issue {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 5px 10px;
+  border-bottom: 1px dotted;
+  letter-spacing: .015em;
+  &:first-of-type {
+    padding-top: 0;
+  }
+  &:last-of-type {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  &.single-issue {
+    justify-content: center;
+  }
+}
+
+.input-issues-container {
+  &.input-errors .input-issue {
+    border-color: #881111;
+    color: #aa2222;
+  }
+  &.input-warnings .input-issue {
+    border-color: #5A5A00;
+    color: #787800;
+  }
+}
+
+.input-issue-sign {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 25px 0 10px;
+  font-size: 22px;
+  @include mobile {
+    display: none;
+  }
+}
+
+.input-issue-data {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  gap: 8px;
+}
+
+.input-issue-text {
+  display: flex;
+  text-align: left;
+  padding-top: 2px;
+  font-size: 17px;
+  text-shadow: .5px .5px $shadow-dark;
+  @include tablet {
+    font-size: 15px;
+  }
+  @include mobile {
+    font-size: 14px;
+  }
+}
+
+.input-issue-details {
+  display: flex;
+  padding-left: 5px;
+}
+
+.fragments {
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background: $bg-medium-dark;
+  color: $text-dim-darker;
+  font-family: 'Inconsolata', monospace;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  white-space: pre-wrap;
+  @include mobile {
+    padding: 5px 8px;
+    font-size: 14px;
+  }
+}
+
+.input-issues-container {
+  &.input-errors .fragment-invalid {
+    color: #cc3333;
+    background: rgba(255, 0, 0, .1);
+  }
+  &.input-warnings .fragment-invalid {
+    color: #787800;
+    background: rgba(255, 255, 0, .05);
+  }
+}

@@ -1,0 +1,94 @@
+<!-- Converter Menu -->
+<app-menu class="converter-menu" [options]="converterMenu" [selectedId]="selectedConverter" />
+
+<!-- Converter (Page Content) -->
+@for (converter of converters; track converter.name) {
+  @if (converter.name === selectedConverter) {
+    <div class="converter-block">
+
+      <!-- Instruction -->
+      <div class="instruction-container">
+        <div class="instruction-text">
+          Input a valid {{converter.name}} color. It will be converted to the other color spaces.
+        </div>    
+      </div>
+
+      <!-- Input Notation Menu -->
+      @if (converter.inputNotations.length > 1) {
+        <app-menu
+         class="notation-menu"
+         label="Use input format:"
+         [options]="notationMenu[converter.name]"
+         [selectedId]="converter.selectedNotationIndex"
+        />
+      }
+
+      <!-- Input Examples -->
+      <div class="example-container">
+        <div class="example-text">
+          <span class="example-text-label">Example: </span>
+          <span class="example-string">{{converter.inputNotations[converter.selectedNotationIndex].example}}</span>
+        </div> 
+      </div>
+
+      <!-- Input -->
+      <div class="text-input-container">
+        <div class="text-input-block">
+          <input 
+            type="text"
+            [value]="converter.userInput"
+            maxlength="30" 
+            (input)="updateUserInput(converter, $event)"
+            (keydown)="onKeyDown(converter, $event)"
+          />
+          <button type="button" class="convert-button" (click)="runConverter(converter)">Convert</button>
+        </div>
+      </div>
+
+      <!-- Errors and Warnings -->
+      @for (list of [converter.result.errors, converter.result.warnings]; track $index) {
+        @if (list.length) {
+          <div
+            class="input-issues-container"
+            [ngClass]="{
+              'input-errors': list === converter.result.errors,
+              'input-warnings': list === converter.result.warnings,
+              'fade-in-1': fadeInState,
+              'fade-in-2': !fadeInState
+            }">
+
+            @for (issue of list; track $index) {
+              <div 
+                class="input-issue"
+                [ngClass]="{'single-issue': list.length === 1 && !list[0].details?.length}">
+                <div class="input-issue-sign">&#9888;</div>
+                <div class="input-issue-data">
+                  <div class="input-issue-text">{{issue.text}}</div>
+                  @if (issue.details) {
+                    <div class="input-issue-details">
+                      <div class="fragments">
+                        @for (fragment of issue.details; track $index) {
+                          <span [ngClass]="{'fragment-invalid': !fragment.isValid}">{{fragment.text}}</span>
+                        } 
+                      </div>
+                    </div>
+                  }
+                </div>
+              </div> 
+            }
+          </div>
+        }
+      }
+
+      <!-- Output -->
+      @if (converter.result.color) {
+        <app-output-color
+          [ngClass]="{'fade-in-1': fadeInState, 'fade-in-2': !fadeInState}"
+          headerText="Converted Color"
+          [color]="converter.result.color"
+        />
+      }
+      
+    </div>
+  }
+}

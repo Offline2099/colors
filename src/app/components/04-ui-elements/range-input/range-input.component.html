@@ -1,0 +1,47 @@
+<!-- Header -->
+<div class="input-header">
+
+  <!-- Min Value -->
+  <div class="value-min">
+    <span>{{min()}}</span>
+    <ng-template [ngTemplateOutlet]="unit" />
+  </div>
+
+  <!-- Range Name & Current Value -->
+  <div class="input-header-text">
+    <span class="input-name">{{range().name}}</span>
+    <span class="input-value">
+      <span>(&hairsp;{{currentValueText()}}</span>
+      @switch (range().type) {
+        @case (RangeType.percentage) {&hairsp;%}
+        @case (RangeType.degree) {&hairsp;&deg;}
+      }
+      <span>&hairsp;)</span>
+    </span>
+  </div>
+
+  <!-- Max Value -->
+  <div class="value-max">
+    <span>{{max()}}</span>
+    <ng-template [ngTemplateOutlet]="unit" />
+  </div>
+
+</div>
+
+<!-- Slider -->
+<input
+  type="range"
+  [min]="min()"
+  [max]="max()"
+  [value]="currentValue()"
+  [step]="range().step"
+  (input)="updateRange($event)"
+/>
+
+<!-- Unit Template -->
+<ng-template #unit>
+  @switch (range().type) {
+    @case (RangeType.percentage) {%}
+    @case (RangeType.degree) {&deg;}
+  }
+</ng-template>

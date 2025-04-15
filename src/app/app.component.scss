@@ -1,0 +1,96 @@
+@use '../styles-shared' as *;
+
+$header-height: 93px;
+$header-height-tablet: 83px;
+$footer-height: 80px;
+
+:host {
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: calc(100vh + $footer-height);
+}
+
+//=============================================================================
+//  Header
+//=============================================================================
+
+header {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: center;
+  height: $header-height;
+  padding-top: 15px;
+  background: $bg-medium-dark;
+  user-select: none;
+  h1 {
+    display: flex;
+    justify-content: center;
+    width: min(1000px, 100% - 20px);
+    padding-bottom: 5px;
+    border-bottom: 2px solid $border-dark;
+    font-size: 26px;
+    font-weight: normal;
+    letter-spacing: .03em;
+    text-shadow: 1px 1px $shadow-dark;
+    @include tablet {
+      font-size: 24px;
+    }
+    @include mobile {
+      font-size: 22px;
+    }
+  }
+  @include tablet {
+    height: $header-height-tablet;
+  }
+}
+
+//=============================================================================
+//  Page Content
+//=============================================================================
+
+main {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  height: calc(100% - $header-height - $footer-height);
+  align-content: flex-start;
+  @include tablet {
+    height: calc(100% - $header-height-tablet - $footer-height);
+  }
+}
+
+//=============================================================================
+//  Footer
+//=============================================================================
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: $footer-height;
+  padding-top: 20px;
+  background: $bg-medium-dark;
+  gap: 3px;
+  .row {
+    display: flex;
+    gap: 15px;
+    font-size: 15px;
+    a {
+      color: $text-dim-dark;
+      text-decoration: none;
+      font-size: inherit;
+      transition: .2s;
+      @include hover {
+        color: $text-dim;
+      }
+    }
+    span {
+      user-select: none;
+    }
+    @include tablet {
+      font-size: 13px;
+    }
+  }
+}

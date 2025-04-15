@@ -1,0 +1,35 @@
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@mixin enable-blink($duration) {
+  &.fade-in-1 {
+    animation: fade-in-1 $duration !important;
+  }
+  &.fade-in-2 {
+    animation: fade-in-2 $duration !important;
+  }
+}
+
+@keyframes fade-in-1 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-2 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

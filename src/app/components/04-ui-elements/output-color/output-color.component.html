@@ -1,0 +1,58 @@
+<!-- Header -->
+<div class="output-container-header">{{headerText()}}</div>
+
+<div class="output-container-data">
+
+  <!-- Color Sample -->
+  <div class="color-output" [ngStyle]="{'background': color().hex}"></div>
+
+  <!-- Text Data Blocks -->
+  <div class="text-output">
+
+    @for (block of textOutputBlocks; track $index) {
+      <div class="text-output-block" [ngClass]="{'collapsed': block.isCollapsed}">
+
+        <!-- Text Block Header -->
+        <div class="block-header">
+          <div>{{block.colorSpaceName}}</div>
+          <div 
+            class="block-toggler"
+            (click)="toggleTextOutputBlock(block)">
+            <span class="block-toggler-triangle">&#9650;</span>
+          </div>
+        </div>
+
+        <!-- Text Block Body -->
+        <div class="block-body">
+          @for (notation of block.notations; track $index) {
+            <div class="text-output-notation">
+              <div class="notation-name">{{notation.name}}</div>
+              <div class="notation-values">
+                @for (value of notation.values(); track $index) {
+                  <span 
+                    class="text-output-value"
+                    [ngClass]="{'value-hexadecimal': notation.name === Notation.hexadecimal}">
+                    <ng-container>{{value}}</ng-container>
+                  </span>
+                  @if (
+                    notation.name === Notation.percentages &&
+                    !(block.colorSpaceName === SPACE_HSL.name && $first)
+                  ) {
+                    <span class="percent-sign">%</span>
+                  }
+                  @if (notation.name !== Notation.hexadecimal && !$last) {
+                    <span>,</span>
+                  }
+                }
+              </div>
+            </div>
+          }
+          
+        </div>
+
+      </div>
+    }
+
+  </div>
+
+</div>

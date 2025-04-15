@@ -1,0 +1,153 @@
+<div class="column">
+
+  <!-- Page Sections -->
+  @for (section of pageSections; track section.id) {
+    <div 
+      class="info-section"
+      [ngClass]="{
+        'collapsed': section.isCollapsed,
+        'hovered': section.isHovered
+      }">
+      
+      <!-- Section Header -->
+      <div 
+        class="info-section-header"
+        (click)="toggleSection(section)"
+        (mouseenter)="setSectionHoverStatus(section, true)"
+        (mouseleave)="setSectionHoverStatus(section, false)">
+
+        <div class="triangle-container">
+          <div class="triangle">&#9654;</div>
+        </div>
+
+        <div class="text-container">
+          @switch (section.id) {
+            @case (Section.perceptionOfColors) {
+              <div class="header-text">Perception of Colors</div>
+              <div class="header-caption">A basic overview of how the human eye recognizes and distinguishes colors.</div>
+            }
+            @case (Section.colorSpaces) {
+              <div class="header-text">Color Spaces</div>
+              <div class="header-caption">What is a color space and what it is for.</div>
+            }
+            @case (Section.colorSpaceRGB) {
+              <div class="header-text">RGB Color Space</div>
+              <div class="header-caption">A brief description of the RGB color space.</div>
+            }
+            @case (Section.colorSpaceHSL) {
+              <div class="header-text">HSL Color Space</div>
+              <div class="header-caption">A brief description of the HSL color space.</div>
+            }
+            @case (Section.colorSpaceCMYK) {
+              <div class="header-text">CMYK Color Space</div>
+              <div class="header-caption">A brief description of the CMYK color space.</div>
+            }
+          }
+        </div>
+
+      </div>
+
+      <!-- Section Body -->
+      <div class="info-section-body">
+        @switch (section.id) {
+
+          @case (Section.perceptionOfColors) {
+            <ul>
+              <li>Our eyes can see objects around us only if some visible light is either emitted or reflected by those objects. Light entering the eye is detected by cells in a tissue called the <strong>retina</strong>, which then sends nerve impulses along the <strong>optic nerve</strong> to the brain.</li>
+              <li>Light can be interpreted as waves of the electromagnetic field traveling through space. As such, it can be characterized by its <strong>wavelength</strong>, which is the distance between any two adjacent crests of the wave.
+              <ul>
+                <li>Light that can be seen by the human eye has wavelengths of about 400 to 700 nanometers. This range is known as the <strong>visible spectrum</strong>. Light with different wavelengths within the visible spectrum is perceived as different colors.</li>
+                <li>Light with wavelengths longer than 700 nanometers is called <strong>infrared</strong>. Light with wavelengths shorter than 400 nanometers is called <strong>ultraviolet</strong>. Both are invisible to the human eye, but can be seen by some animals and can be detected by measuring devices.</li>
+              </ul>
+              </li>
+              <li>Light of the same wavelength can have different <strong>intensities</strong>. Higher intensity is perceived as brighter colors, closer to white. Lower intensity produces darker colors, closer to black.</li>
+              <li>The retina in the human eye normally contains three types of color-sensitive cells: S-cones, M-cones, and L-cones. Each type is responsive to a specific range of visible wavelengths. These three ranges roughly correspond to the three colors: blue, green, and red. The final perceived color is the sum of the responses from each of the three cell types. This is known as the <strong>trichromatic vision</strong>.</li>
+              <li>Each type of color-sensitive cells in the eye responds independently to specific wavelengths of visible light. This allows colors to be mixed. 
+                <ul>
+                  <li>Light sources (such as lamps or computer screens) typically emit electromagnetic waves of multiple wavelengths and intensities simultaneously. Altering the intensity of light of certain wavelengths changes the perceived color. This is called <strong>additive color mixing</strong>.</li>
+                  <li>Materials (such as inks) can reflect light of certain wavelengths and absorb light of other wavelengths. Mixing such materials together changes the spectrum of the reflected light, and thus the perceived color of the resulting material. This is called <strong>subtractive color mixing</strong>.</li>
+                </ul>
+              </li>
+            </ul>
+          }
+
+          @case (Section.colorSpaces) {
+            <ul>
+              <li>A <strong>color model</strong> is an abstract mathematical model that describes and organizes visible colors in a practically applicable form. It is possible to design multiple color spaces based on the same color model.</li>
+              <li>A <strong>color space</strong> is a way of representing a color as a unique set of numbers. Every possible color in such space is specified as a combination of several basic components (<strong>primary colors</strong>), each of which can vary within a defined range of values. This is similar to how a point in physical space is determined by its coordinates.</li>
+              <li>Using standardized color spaces provides several important advantages.
+                <ul>
+                  <li>Each specific color can always be accurately referenced.</li>
+                  <li>Colors can be consistently displayed by different physical devices.</li>
+                  <li>Colors can be treated as vectors which can be added, subtracted, rotated, or subjected to other mathematical operations.</li>
+                  <li>Available colors can be visualized in a more intuitive geometric way.</li>
+                </ul>
+              </li>
+              <li>Multiple color spaces have been developed, based on color models and approaches that are better suited for specific practical applications.
+                <ul>
+                  <li>Devices that emit light (such as computer screens) normally use color spaces based on additive color mixing, such as RGB and HSL.</li>
+                  <li>Devices that produce colors with physical substances (such as printers) use color spaces based on subtractive color mixing, such as CMYK.</li>
+                </ul>
+              </li>
+            </ul>
+          }
+
+          @case (Section.colorSpaceRGB) {
+            <ul>
+              <li>The <strong>RGB color space</strong> represents colors using 3 components: <span class="red">red</span>, <span class="green">green</span>, and <span class="blue">blue</span>.</li>
+              <li>RGB is an additive color space developed for displaying images in electronic systems, such as televisions and computers.
+                <ul>
+                  <li>Combining <span class="red">red</span> and <span class="green">green</span> light produces a <span class="yellow">yellow</span> color.</li>
+                  <li>Combining <span class="red">red</span> and <span class="blue">blue</span> light produces a <span class="magenta">magenta</span> color.</li>
+                  <li>Combining <span class="green">green</span> and <span class="blue">blue</span> light produces a <span class="cyan">cyan</span> color.</li>
+                  <li>Combining light of all three primary colors (<span class="red">red</span>, <span class="green">green</span>, and <span class="blue">blue</span>) produces a white color.</li>
+                  <li>The absence of light, equal to no component added, produces a black color.</li>
+                </ul>
+              </li>
+              <li>Modern electronic devices and software often use the standard version of the RGB color space, in which the values of each color component are represented as integers between 0 and 255. This allows a total of <span class="no-break">256&hairsp;×&hairsp;256&hairsp;×&hairsp;256</span> colors to be specified, which calculates to <span class="no-break">16&thinsp;777&thinsp;216</span> colors.</li>
+              <li>A convenient way to represent colors of the RGB color space is the <strong>hexadecimal</strong> notation. The decimal value of each component is converted to base 16 and fits in the range between 00 and FF. The three values are then written consecutively as a string only six characters long.</li>
+            </ul>
+            <div class="range-input-container">
+              <app-range-input-block [colorSpace]="SPACE_RGB" [displaySample]="true" />
+            </div>
+          }
+
+          @case (Section.colorSpaceHSL) {
+            <ul>
+              <li>The <strong>HSL color space</strong> represents colors using 3 components: hue, saturation, and lightness. It is an alternative representation of the RGB color model.
+                <ul>
+                  <li><strong>Hue</strong> can be roughly interpreted as a value corresponding to the dominant wavelength of light which produces an identical perception of a color by the human eye. Hue is cyclic and can be represented as a point on a circle, measured by the angle between 0 and 360 degrees.</li>
+                  <li><strong>Saturation</strong> reflects the share of the total light intensity that is carried by the particular wavelength of light. Zero saturation results in gray tones (no wavelengths standing out), whereas 100% saturation results in the purest color.</li>
+                  <li><strong>Lightness</strong> represents the total light intensity. Lower lightness results in brighter colors, closer to white. Higher lightness results in darker colors, closer to black.</li>
+                </ul>
+              </li>
+            </ul>
+            <div class="range-input-container">
+              <app-range-input-block [colorSpace]="SPACE_HSL" [displaySample]="true" />
+            </div>
+          }
+
+          @case (Section.colorSpaceCMYK) {
+            <ul>
+              <li>The <strong>CMYK color space</strong> represents colors using 4 components: <span class="cyan">cyan</span>, <span class="magenta">magenta</span>, <span class="yellow">yellow</span>, and key (black).</li>
+              <li>CMYK is a subtractive color space used primarily for printers that mix physical inks.
+                <ul>
+                  <li>Mixing <span class="cyan">cyan</span> and <span class="magenta">magenta</span> inks produces a <span class="blue">blue</span> color.</li>
+                  <li>Mixing <span class="cyan">cyan</span> and <span class="yellow">yellow</span> inks produces a <span class="green">green</span> color.</li>
+                  <li>Mixing <span class="magenta">magenta</span> and <span class="yellow">yellow</span> inks produces a <span class="red">red</span> color.</li>
+                  <li>Mixing all three inks (<span class="cyan">cyan</span>, <span class="magenta">magenta</span>, and <span class="yellow">yellow</span>) produces a black color.</li>
+                  <li>The absence of ink, equal to no component added, leaves the background color unchanged. In case of printing on white paper, this results in a white color.</li>
+                </ul>
+              </li>
+            </ul>
+            <div class="range-input-container">
+              <app-range-input-block [colorSpace]="SPACE_CMYK" [displaySample]="true" />
+            </div>
+          }
+
+        }
+      </div>
+
+    </div>
+  }
+</div>

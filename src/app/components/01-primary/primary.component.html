@@ -1,0 +1,17 @@
+<!-- Output Color -->
+<app-output-color [color]="color()" headerText="Selected Color" />
+
+<!-- Instructions -->
+<div class="instruction-container">
+  <div class="instruction-text">
+    <div>Move sliders for any of the three color spaces below. <br />The output above shows how it modifies the color.</div>
+    <div>Sliders for the other two color spaces will adjust automatically to reflect the change.</div>
+  </div>
+</div>
+
+<!-- Range Inputs -->
+<div class="range-inputs-container">
+  @for (space of colorSpaces; track $index) {
+    <app-range-input-block [colorSpace]="space" [(color)]="color" />
+  }
+</div>

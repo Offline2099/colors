@@ -1,0 +1,259 @@
+@use '../../../../styles-shared' as *;
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  width: min(1000px, 100% - 40px);
+  border-radius: 15px;
+  padding: 5px 10px 10px 10px;
+  background: linear-gradient($bg-darker, $bg-very-dark);
+  box-shadow: 0 0 2px 2px $shadow-darker inset;
+  @include tablet {
+    width: calc(100% - 16px);
+  }
+  @include mobile {
+    width: calc(100% - 10px);
+    padding: 5px 8px 8px 8px;
+  }
+}
+
+//=============================================================================
+//  Header
+//=============================================================================
+
+.output-container-header {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 12px;
+  padding: 0 10px 1px 10px;
+  border-bottom: 2px solid $border-normal;
+  font-size: 22px;
+  letter-spacing: 0.02em;
+  user-select: none;
+  @include tablet {
+    font-size: 20px;
+  }
+  @include mobile {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+}
+
+//=============================================================================
+//  Containers
+//=============================================================================
+
+.output-container-data {
+  display: flex;
+  width: 100%;
+  @include mobile {
+    flex-wrap: wrap;
+  }
+}
+
+.color-output {
+  display: flex;
+  width: 42%;
+  max-width: 420px;
+  border-radius: 10px;
+  box-shadow: 0 0 2px 2px $shadow-dark inset;
+  @include mobile {
+    width: 100%;
+    max-width: unset;
+    min-height: 150px;
+  }
+}
+
+.text-output {
+  display: flex;
+  width: 58%;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  margin-left: 10px;
+  padding: 3px 10px;
+  border-radius: 10px;
+  background: $bg-dark;
+  @include tablet {
+    min-width: 335px;
+    margin-left: 5px;    
+  }
+  @include mobile {
+    width: 100%;
+    margin-top: 8px;
+    margin-left: 0;
+    padding: 3px 5px;
+  }
+}
+
+//=============================================================================
+//  Text Block
+//=============================================================================
+
+.text-output-block {
+  display: flex;
+  width: 100%;
+  padding: 5px 0;
+  border-bottom: 1px solid $border-normal;
+  transition: 300ms;
+  overflow: hidden;
+  &:last-of-type {
+    border-bottom: none;
+  }
+  @include tablet {
+    flex-wrap: wrap;
+    border-bottom: none;
+    max-height: 150px;
+    &.collapsed {
+      max-height: 30px;
+    }
+  }
+  @include mobile {
+    padding-bottom: 0;
+  }
+}
+
+//=============================================================================
+//  Text Block Header
+//=============================================================================
+
+.block-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  letter-spacing: 0.02em;
+  @include tablet {
+    width: 100%;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid $border-normal;
+  }
+  @include mobile {
+    font-size: 14px;
+  }
+}
+
+.block-toggler {
+  position: absolute;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  right: 5px;
+  width: 24px;
+  height: 22px;
+  color: $text-dim-dark;
+  cursor: pointer;
+  user-select: none;
+  @include tablet {
+    display: flex;
+    font-size: 14px;
+  }
+  @include mobile {
+    height: 16px;
+    font-size: 12px;
+  }
+}
+
+.block-toggler-triangle {
+  transform: rotateX(0deg);
+  transition: .3s;
+}
+
+.text-output-block.collapsed .block-toggler-triangle {
+  transform: rotateX(180deg);
+}
+
+//=============================================================================
+//  Text Block Body
+//=============================================================================
+
+.block-body {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.text-output-notation {
+  display: flex;
+  padding: 4px 5px;
+  border-bottom: 1px dotted $border-bright;
+  &:first-of-type {
+    padding-top: 2px;
+  }
+  &:last-of-type {
+    padding-bottom: 2px;
+    border-bottom: none;
+  }
+  @include tablet {
+    padding-top: 3px;
+    padding-bottom: 0;
+  }
+}
+
+.notation-name {
+  display: flex;
+  min-width: 125px;
+  border-right: 1px dotted $border-bright;
+  color: $text-dim;
+  letter-spacing: 0.02em;
+  @include tablet {
+    min-width: 110px;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  @include mobile {
+    min-width: 88px;
+    font-size: 12px;
+  }
+}
+
+.notation-values {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 1px;
+  padding: 0 5px;
+  @include tablet {
+    font-size: 14px;
+  }
+  @include mobile {
+    padding: 0 0 0 5px;
+    font-size: 12px;
+  }
+}
+
+.text-output-value,
+.percent-sign {
+  margin-right: 1px;
+  padding-top: 2px;
+  text-align: right;
+  font-family: 'Inconsolata', monospace;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  @include tablet {
+    font-size: 14px;
+  }
+  @include mobile {
+    font-size: 13px;
+  }
+}
+
+.text-output-value {
+  margin-left: .5em;
+  color: #b8860b;
+  @include mobile {
+    margin-left: .25em;
+  }
+}
+
+.percent-sign {
+  margin-left: 1px;
+  color: #916a08;
+}
+
+.value-hexadecimal {
+  margin: 0 1px;
+}

@@ -1,0 +1,68 @@
+@use '../../../styles-shared' as *;
+
+:host {
+  @include page;
+  @include page-bg-gradient-conic;
+}
+
+//=============================================================================
+//  Instructions
+//=============================================================================
+
+.instruction-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin: 12px 0;
+  @include mobile {
+    margin: 5px 0;
+  }
+}
+
+.instruction-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  max-width: 1000px;
+  margin: 0 10px;
+  padding: 10px;
+  text-align: center;
+  font-size: 17px;
+  letter-spacing: .015em;
+  br {
+    display: none;
+  }
+  @include tablet {
+    font-size: 16px;
+    br {
+      display: initial;
+    }
+  }
+  @include mobile {
+    font-size: 14px;
+    br {
+      display: none;
+    }
+  }
+}
+
+//=============================================================================
+//  Container with Range Blocks
+//=============================================================================
+
+.range-inputs-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0 8px 20px 8px;
+  @include tablet {
+    gap: 10px;
+  }
+  @include mobile {
+    gap: 6px;
+    margin: 0 0 15px 0;
+  }
+}
