@@ -21,5 +21,5 @@ export const SPACE_HSL: ColorSpace<HSL, NotationHSL> = {
     { id: HSL.s, name: 'Saturation', ...RANGE_PERCENTAGE },
     { id: HSL.l, name: 'Lightness', ...RANGE_PERCENTAGE }
   ],
-  notations: Object.values(NotationHSL)
+  notations: [NotationHSL.percentages, NotationHSL.arithmetic]
 }

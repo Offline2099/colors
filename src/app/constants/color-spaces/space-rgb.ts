@@ -23,5 +23,10 @@ export const SPACE_RGB: ColorSpace<RGB, NotationRGB> = {
     { id: RGB.g, name: 'Green', ...DECIMAL_0_TO_255 },
     { id: RGB.b, name: 'Blue', ...DECIMAL_0_TO_255 }
   ],
-  notations: Object.values(NotationRGB)
+  notations: [
+    NotationRGB.decimal,
+    NotationRGB.percentages,
+    NotationRGB.arithmetic,
+    NotationRGB.hexadecimal
+  ]
 }

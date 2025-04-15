@@ -23,5 +23,5 @@ export const SPACE_CMYK: ColorSpace<CMYK, NotationCMYK> = {
     { id: CMYK.y, name: 'Yellow', ...RANGE_PERCENTAGE },
     { id: CMYK.k, name: 'Key', ...RANGE_PERCENTAGE }
   ],
-  notations: Object.values(NotationCMYK)
+  notations: [NotationCMYK.percentages, NotationCMYK.arithmetic]
 }
